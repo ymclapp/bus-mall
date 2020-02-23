@@ -1,0 +1,54 @@
+body {
+    width: 960px;
+}
+aside {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    width: 30%;
+    float: left;
+    margin-right: 20px;
+}
+
+#bmimages {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    width: 70%;
+    margin: 20px;
+
+}
+
+#instructions {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    /* position: absolute; */
+    text-align: justify;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+#image1 {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    float: left;
+    margin: 2px;
+}
+
+#image2 {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    float: left;
+    margin: 2px;
+}
+
+#image3 {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    float: left;
+    margin: 2px;
+}
