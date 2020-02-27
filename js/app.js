@@ -30,100 +30,84 @@ new Product('Pen Utensil Set', 'img/pen.jpg');
 new Product('Dust Boots', 'img/pet-sweep.jpg');
 new Product('Pizza Scissors', 'img/scissors.jpg');
 new Product('Shark Sleepingbag', 'img/shark.jpg');
-new Product('Onesie Sweeper', 'img/sweep.jpg');
+new Product('Onesie Sweeper', 'img/sweep.png');
 new Product('Tauntaun Sleepingbag', 'img/tauntaun.jpg');
 new Product('Unicorn Meat', 'img/unicorn.jpg');
-new Product('Octopus Tentacle USB', 'img/usb.jpg');
+new Product('Octopus Tentacle USB', 'img/usb.gif');
 new Product('Watering Can', 'img/water-can.jpg');
 new Product('Smell The Bouquet Wine Glass', 'img/wine-glass.jpg');
+
+allImages[imageIndex1].totalshow++;
+allImages[imageIndex2].totalshow++;
+allImages[imageIndex3].totalshow++;
 
 function imageWasClicked(event) {
 
     console.log('an image was clicked');
     
     totalClicks++;
+
+    console.log(event.srcElement.id);
     
-    if(event.srcElement.id === '1') {
+    if(event.srcElement.id === 'image1') {
         allImages[imageIndex1].timesClicked++;
-    } else if(event.srcElement.id === '2') {
+    } else if(event.srcElement.id === 'image2') {
         allImages[imageIndex2].timesClicked++;
     } 
-    // else if(event.srcElement.id === '3') {
-    //     allImages[imageIndex3].timesClicked++;
-    // } else if(event.srcElement.id === '4') {
-    //     allImages[imageIndex4].timesClicked++;
-    // } else if(event.srcElement.id === '5') {
-    //     allImages[imagIndex5].timesClicked++;
-    // } else if(event.srcElement.id === '6') {
-    //     allImages[imageIndex6].timesClicked++;
-    // } else if(event.srcElement.id === '7') {
-    //     allImages[imageIndex7].timesClicked++;
-    // } else if(event.srcElement.id === '8') {
-    //     allImages[imageIndex8].timesClicked++;
-    // } else if(event.srcElement.id === '9') {
-    //     allImages[imageIndex9].timesClicked++;
-    // } else if(event.srcElement.id === '10') {
-    //     allImages[imageIndex10].timesClicked++;
-    // } else if(event.srcElement.id === '11') {
-    //     allImages[imageIndex11].timesClicked++;
-    // } else if(event.srcElement.id === '12') {
-    //     allImages[imageIndex12].timesClicked++;
-    // } else if(event.srcElement.id === '13') {
-    //     allImages[imageIndex13].timesClicked++;
-    // } else if(event.srcElement.id === '14') {
-    //     allImages[imageIndex14].timesClicked++;
-    // } else if(event.srcElement.id === '15') {
-    //     allImages[imageIndex15].timesClicked++;
-    // } else if(event.srcElement.id === '16') {
-    //     allImages[imageIndex16].timesClicked++;
-    // } else if(event.srcElement.id === '17') {
-    //     allImages[imageIndex17].timesClicked++;
-    // } else if(event.srcElement.id === '18') {
-    //     allImages[imageIndex18].timesClicked++;
-    // } else if(event.srcElement.id === '19') {
-    //     allImages[imageIndex19].timesClicked++;
-    // } else if(event.srcElement.id === '20') {
-        // allImages[image20].timesClicked++;
-    else {
-        allImages[imageIndex3].timesClicked++
+    else if(event.srcElement.id === 'image3') {
+        allImages[imageIndex3].timesClicked++; 
+    } else {
+        console.log('It appears something weird happened.');
     }
-    console.log('It appears something weird happened.');
+
     
 }
 
 var nextImageIndex1 = Math.floor(Math.random() * allImages.length);
-while ((nextImageIndex1 === imageIndex1) || (nextImageIndex1 === image2) || (nextImageIndex1 === imageIndex3)) {
+while ((nextImageIndex1 === imageIndex1) || (nextImageIndex1 === imageIndex2) || (nextImageIndex1 === imageIndex3)) {
     nextImageIndex1 = Math.floor(Math.random() * allImages.length);
 }
 
+
 var nextImageIndex2 = Math.floor(Math.random() * allImages.length);
-while ((nextImageIndex2 === imageIndex1) || (nextImageIndex2 === imageIndex2) || (nextImageIndex2 === imageIndex3) || (nextImageIndex2 === nextImageIndex1) || (nextImageIndex2 === nextImageIndex2) || (nextImageIndex2 === nextImageIndex3)) {
+while ((nextImageIndex2 === imageIndex1) || (nextImageIndex2 === imageIndex2) || (nextImageIndex2 === imageIndex3) || (nextImageIndex2 === nextImageIndex1)) {
     nextImageIndex2 = Math.floor(Math.random() * allImages.length);
 }
 
-var nextImage3 = Math.floor(Math.random() * allImages.length);
-while ((nextImageIndex3 === imageIndex1) || (nextImageIndex3 === imageIndex2) || (nextImageIndex3 === imageIndex3) || (nextImageIndex3 === nextImageIndex1) || (nextImageIndex3 === nextImageIndex2) || (nextImageIndex3 === nextImageIndex3)) {
-    nextImage3 = Math.floor(Math.random() * allImages.length);
+
+var nextImageIndex3 = Math.floor(Math.random() * allImages.length);
+while ((nextImageIndex3 === imageIndex1) || (nextImageIndex3 === imageIndex2) || (nextImageIndex3 === imageIndex3) || (nextImageIndex3 === nextImageIndex1) || (nextImageIndex3 === nextImageIndex2)) {
+    nextImageIndex3 = Math.floor(Math.random() * allImages.length);
 }
 
+
+
 imageIndex1 = nextImageIndex1;
-// allImages[imageIndex1]
+// allImages[imageIndex1].totalshow++;
 imageIndex2 = nextImageIndex2;
+// allImages[imageIndex2].totalshow++;
 imageIndex3 = nextImageIndex3;
+// allImages[imageIndex3].totalshow++;
 
-imageElements[0].src = allImages[imageIndex1].imageUrl;
-imageElements[1].src = allImages[imageIndex2].imageUrl;
-imageElements[2].src = allImages[imageIndex3].imageUrl;
 
-if(totalClicks <= 25) {
+
+// [put in image clicked]
+
+if(totalClicks >= 25) {
     var asideEl = document.getElementsByTagName('aside')[0];
     if(asideEl.firstElementChild) {
         asideEl.firstElementChild.remove();
     }
 
-    var createPara = document.createElement('p');
-    createPara.textContent = 'Thank you for voting!';
-    asideEl.appendChild(createPara);
+    var createUL = document.createElement('ul');
+    for (var i=0; i < allImages.length; i++) {
+        var createLI = document.createElement('li');
+        createLI.textContent = allImages[i].name + ' had' + allImages[i].timesClicked + ' votes and was shown ' + allImages[i].totalShow + ' times.';
+        createUL.appendChild(createLI);
+    }
+   
+    // createPara.textContent = 'Thank you for voting!';
+    // asideEl.appendChild(createUL);
 }
 
 for (var i = 0; i < imageElements.length; i++) {
