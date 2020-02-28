@@ -13,6 +13,7 @@ function Product(name, imgUrl) {
     this.name = name;
     this.imgUrl = imgUrl;
     this.timesClicked = 0;
+    this.totalShow = 0;
     allImages.push(this);
 }
 
@@ -37,92 +38,83 @@ new Product('Octopus Tentacle USB', 'img/usb.gif');
 new Product('Watering Can', 'img/water-can.jpg');
 new Product('Smell The Bouquet Wine Glass', 'img/wine-glass.jpg');
 
-allImages[imageIndex1].totalshow++;
-allImages[imageIndex2].totalshow++;
-allImages[imageIndex3].totalshow++;
 
 function imageWasClicked(event) {
 
     console.log('an image was clicked');
     
-    totalClicks++;
+totalClicks++;
 
-    console.log(event.srcElement.id);
-    
-    if(event.srcElement.id === 'image1') {
-        allImages[imageIndex1].timesClicked++;
-    } else if(event.srcElement.id === 'image2') {
-        allImages[imageIndex2].timesClicked++;
-    } 
-    else if(event.srcElement.id === 'image3') {
-        allImages[imageIndex3].timesClicked++; 
-    } else {
-        console.log('It appears something weird happened.');
-    }
+       
+if(event.srcElement.id === 'imageIndex1') {
+    allImages[imageIndex1].timesClicked++;
 
-    
-}
+} else if(event.srcElement.id === 'imageIndex2') {
+    allImages[imageIndex2].timesClicked++;
+
+} else if(event.srcElement.id === 'imageIndex3') {
+    allImages[imageIndex3].timesClicked++; 
+} 
 
 var nextImageIndex1 = Math.floor(Math.random() * allImages.length);
+
 while ((nextImageIndex1 === imageIndex1) || (nextImageIndex1 === imageIndex2) || (nextImageIndex1 === imageIndex3)) {
     nextImageIndex1 = Math.floor(Math.random() * allImages.length);
 }
-
-
 var nextImageIndex2 = Math.floor(Math.random() * allImages.length);
 while ((nextImageIndex2 === imageIndex1) || (nextImageIndex2 === imageIndex2) || (nextImageIndex2 === imageIndex3) || (nextImageIndex2 === nextImageIndex1)) {
     nextImageIndex2 = Math.floor(Math.random() * allImages.length);
 }
-
-
 var nextImageIndex3 = Math.floor(Math.random() * allImages.length);
 while ((nextImageIndex3 === imageIndex1) || (nextImageIndex3 === imageIndex2) || (nextImageIndex3 === imageIndex3) || (nextImageIndex3 === nextImageIndex1) || (nextImageIndex3 === nextImageIndex2)) {
     nextImageIndex3 = Math.floor(Math.random() * allImages.length);
 }
 
-
-
 imageIndex1 = nextImageIndex1;
-// allImages[imageIndex1].totalshow++;
 imageIndex2 = nextImageIndex2;
-// allImages[imageIndex2].totalshow++;
 imageIndex3 = nextImageIndex3;
-// allImages[imageIndex3].totalshow++;
 
 
+// This is what is changing the images
+imageElements[0].src = allImages[imageIndex1].imgUrl;
+allImages[imageIndex1].totalShow++;
+imageElements[1].src = allImages[imageIndex2].imgUrl;
+allImages[imageIndex2].totalShow++;
+imageElements[2].src = allImages[imageIndex3].imgUrl;
+allImages[imageIndex3].totalShow++;
 
-// [put in image clicked]
-
-if(totalClicks >= 25) {
+var clickHappy = 25;
+if(totalClicks >= clickHappy) {
     var asideEl = document.getElementsByTagName('aside')[0];
+
     if(asideEl.firstElementChild) {
         asideEl.firstElementChild.remove();
     }
+    if(totalClicks === clickHappy) {
+        createResultsList();
+        for (var j = 0; j < imageElements.length; j++) {
+            imageElements[j].removeEventListener('click', imageWasClicked);
+        }
+    }
+}
 
-    var createUL = document.createElement('ul');
-    for (var i=0; i < allImages.length; i++) {
+
+
+
+
+}
+
+function createResultsList() {
+      var createUL = document.getElementById('asideList');
+    for (var i = 0; i < allImages.length; i++) {
         var createLI = document.createElement('li');
-        createLI.textContent = allImages[i].name + ' had' + allImages[i].timesClicked + ' votes and was shown ' + allImages[i].totalShow + ' times.';
+        createLI.textContent = allImages[i].name + ':  ' + allImages[i].timesClicked + ' vote(s) and was shown ' + allImages[i].totalShow + ' time(s).';
         createUL.appendChild(createLI);
     }
-   
-    // createPara.textContent = 'Thank you for voting!';
-    // asideEl.appendChild(createUL);
+    
 }
 
 for (var i = 0; i < imageElements.length; i++) {
     imageElements[i].addEventListener('click', imageWasClicked);
 }
-
-
-
-
-// var ul = document.createElement('ul');
-// article.appendChild(ul);
-// for(var i = 0; i < petOne.interests.length; i++){
-//     //Create li
-//     var li = document.createElement('li');
-//     //Fill the lists
-//     li.textContent = petOne.interests[i];
-//     ul.appendChild(li);
 // }

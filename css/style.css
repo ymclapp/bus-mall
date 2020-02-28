@@ -10,6 +10,11 @@ aside {
     margin-right: 20px;
 }
 
+ul, li {
+list-style-type: circle;
+}
+
+
 #bmimages {
     border: 2px;
     border-style: solid;
@@ -18,6 +23,10 @@ aside {
     margin: 20px;
 
 }
+
+/* #name {
+    text-decoration: underline;
+} */
 
 #instructions {
     border: 2px;
@@ -29,7 +38,7 @@ aside {
     padding-bottom: 20px;
 }
 
-#image1 {
+#imageIndex1 {
     border: 2px;
     border-style: solid;
     border-color: black;
@@ -37,7 +46,7 @@ aside {
     margin: 2px;
 }
 
-#image2 {
+#imageIndex2 {
     border: 2px;
     border-style: solid;
     border-color: black;
@@ -45,7 +54,7 @@ aside {
     margin: 2px;
 }
 
-#image3 {
+#imageIndex3 {
     border: 2px;
     border-style: solid;
     border-color: black;
