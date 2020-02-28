@@ -1,0 +1,63 @@
+body {
+    width: 960px;
+}
+aside {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    width: 30%;
+    float: left;
+    margin-right: 20px;
+}
+
+ul, li {
+list-style-type: circle;
+}
+
+
+#bmimages {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    width: 70%;
+    margin: 20px;
+
+}
+
+/* #name {
+    text-decoration: underline;
+} */
+
+#instructions {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    /* position: absolute; */
+    text-align: justify;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+#imageIndex1 {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    float: left;
+    margin: 2px;
+}
+
+#imageIndex2 {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    float: left;
+    margin: 2px;
+}
+
+#imageIndex3 {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    float: left;
+    margin: 2px;
+}
