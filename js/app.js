@@ -9,7 +9,7 @@ var imageIndex2 = 1;
 var imageIndex3 = 2;
 var totalClicks = 0;
 var allImages=[];
-var clickHappy = 5;
+var clickHappy = 25;
 
 function Product(name, imgUrl) {
     this.name = name;
