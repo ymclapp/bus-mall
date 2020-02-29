@@ -1,6 +1,7 @@
 'use strict';
 // use strict is almost always the first line of our js files
 console.log('It is working!');
+console.log(document.getElementById('imageChart'));
 
 var imageElements = document.getElementsByTagName('img');
 var imageIndex1 = 0;
@@ -8,6 +9,7 @@ var imageIndex2 = 1;
 var imageIndex3 = 2;
 var totalClicks = 0;
 var allImages=[];
+var clickHappy = 5;
 
 function Product(name, imgUrl) {
     this.name = name;
@@ -16,6 +18,15 @@ function Product(name, imgUrl) {
     this.totalShow = 0;
     allImages.push(this);
 }
+
+function getProductArray(nameOfThePropertyIWant){
+    var answer = [];
+    for(var i = 0; i < allImages.length; i++){
+        answer[i] = allImages[i][nameOfThePropertyIWant];
+    }
+    return answer;
+}
+
 
 new Product('R2D2 Suitcase', 'img/bag.jpg');
 new Product('Banana Chopper', 'img/banana.jpg');
@@ -38,9 +49,10 @@ new Product('Octopus Tentacle USB', 'img/usb.gif');
 new Product('Watering Can', 'img/water-can.jpg');
 new Product('Smell The Bouquet Wine Glass', 'img/wine-glass.jpg');
 
+var totalClicks = 0;
 
 function imageWasClicked(event) {
-
+  
     console.log('an image was clicked');
     
 totalClicks++;
@@ -83,26 +95,104 @@ allImages[imageIndex2].totalShow++;
 imageElements[2].src = allImages[imageIndex3].imgUrl;
 allImages[imageIndex3].totalShow++;
 
-var clickHappy = 25;
-if(totalClicks >= clickHappy) {
-    var asideEl = document.getElementsByTagName('aside')[0];
 
-    if(asideEl.firstElementChild) {
-        asideEl.firstElementChild.remove();
-    }
+if(totalClicks >= clickHappy) {
+    var footerEl = document.getElementsByTagName('footer')[0];
+
+    // if(footerEl.firstElementChild) {
+    //     footerEl.firstElementChild.remove();
+    // }
     if(totalClicks === clickHappy) {
         createResultsList();
-        for (var j = 0; j < imageElements.length; j++) {
-            imageElements[j].removeEventListener('click', imageWasClicked);
+    }
+
+    for (var i = 0; i < imageElements.length; i++) {
+        imageElements[i].removeEventListener('click', imageWasClicked);
+    }
+    runChart();
+}
+    
+}
+function runChart() {
+
+
+// creates the chart of results
+console.log(document);
+var ctx = document.getElementById('imageChart');
+var test = ctx.getContext('2d');
+
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: getProductArray('name'),
+        datasets: [{
+            label: '# of Votes',
+            data: getProductArray('timesClicked', 'totalShow'),
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(0, 0, 128, 0.2)',
+                'rgba(0, 0, 255, 0.2)',
+                'rgba(0, 128, 0, 0.2)',
+                'rgba(0, 128, 128, 0.2)',
+                'rgba(0, 255, 0, 0.2)',
+                'rgba(0, 255, 255, 0.2)',
+                'rgba(128, 0, 0, 0.2)',
+                'rgba(128, 0, 128, 0.2)',
+                'rgba(128, 128, 0, 0.2)',
+                'rgba(128, 128, 128, 0.2)',
+                'rgba(192, 192, 192, 0.2)',
+                'rgba(255, 0, 0, 0.2)',
+                'rgba(255, 0, 255,0.2)',
+                'rgba(255, 255, 0, 0.2)',
+                'rgba(255, 255, 255, 0.2)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(0, 0, 128, 0.6)',
+                'rgba(0, 0, 255, 0.6)',
+                'rgba(0, 128, 0, 0.6)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(0, 0, 128, 1)',
+                'rgba(0, 0, 255, 1)',
+                'rgba(0, 128, 0, 1)',
+                'rgba(0, 128, 128, 1)',
+                'rgba(0, 255, 0, 1)',
+                'rgba(0, 255, 255, 1)',
+                'rgba(128, 0, 0, 1)',
+                'rgba(128, 0, 128, 1)',
+                'rgba(128, 128, 0, 1)',
+                'rgba(128, 128, 128, 1)',
+                'rgba(192, 192, 192, 1)',
+                'rgba(255, 0, 0, 1)',
+                'rgba(255, 0, 255, 1)',
+                'rgba(255, 255, 0, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(0, 0, 128, 1)',
+                'rgba(0, 0, 255, 1)',
+                'rgba(0, 128, 0, 1)' 
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: {
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1
+                }
+            }
         }
     }
-}
-
-
-
-
+});
 
 }
+
+
+
+
 
 function createResultsList() {
       var createUL = document.getElementById('asideList');
@@ -117,4 +207,3 @@ function createResultsList() {
 for (var i = 0; i < imageElements.length; i++) {
     imageElements[i].addEventListener('click', imageWasClicked);
 }
-// }
