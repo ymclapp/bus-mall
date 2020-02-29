@@ -1,8 +1,6 @@
 # bus-mall
 Lab 11 tracking votes for pictures of products
 
-About-Me
-This is a site about me, lab 02
 
 Lab-##: TOPIC
 Overview goes here...
