@@ -14,7 +14,6 @@ ul, li {
 list-style-type: circle;
 }
 
-
 #bmimages {
     border: 2px;
     border-style: solid;
@@ -24,9 +23,18 @@ list-style-type: circle;
 
 }
 
-/* #name {
-    text-decoration: underline;
-} */
+#saveForButton {
+    width: 620px;
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    float: right;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 
 #instructions {
     border: 2px;
@@ -35,7 +43,11 @@ list-style-type: circle;
     /* position: absolute; */
     text-align: justify;
     padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
     padding-bottom: 20px;
+    float: right;
+    width: 620px;
 }
 
 #imageIndex1 {
