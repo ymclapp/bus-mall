@@ -1,6 +1,18 @@
+html {
+    background: url(/img/background.jpg) no-repeat center center fixed;
+    background-size: 100% 100%;
+  }
+
 body {
     width: 960px;
 }
+
+h1 {
+    font-family: 'Trade Winds', cursive;
+    background-color: fuchsia;
+    height: 50px);
+}
+
 aside {
     border: 2px;
     border-style: solid;
@@ -8,6 +20,7 @@ aside {
     width: 30%;
     float: left;
     margin-right: 20px;
+    background-color: cornflowerblue;
 }
 
 ul, li {
@@ -48,6 +61,8 @@ list-style-type: circle;
     padding-bottom: 20px;
     float: right;
     width: 620px;
+    margin-bottom: 20px;
+    
 }
 
 #imageIndex1 {
@@ -56,6 +71,9 @@ list-style-type: circle;
     border-color: black;
     float: left;
     margin: 2px;
+    width:  200px;
+    height: 200px;
+    background-size: cover;
 }
 
 #imageIndex2 {
@@ -64,7 +82,11 @@ list-style-type: circle;
     border-color: black;
     float: left;
     margin: 2px;
+    width:  200px;
+    height: 200px;
+    background-size: cover;
 }
+
 
 #imageIndex3 {
     border: 2px;
@@ -72,4 +94,14 @@ list-style-type: circle;
     border-color: black;
     float: left;
     margin: 2px;
+    width:  200px;
+    height: 200px;
+    background-size: cover;
+}
+
+
+#imageChart{
+    background-color: whitesmoke;
+    border: 5px;
+    border-style: groove;
 }
